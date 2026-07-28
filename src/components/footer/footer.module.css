@@ -1,0 +1,13 @@
+.footerContainer {
+    border-top: 1px solid var(--border);
+    padding: var(--md);
+    margin-top: var(--md);
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    
+}
+
+.footer {
+    width: 80px;
+}

@@ -6,6 +6,7 @@ import RecentTransactions from "./components/recentTransactions/RecentTransactio
 import TransactionsDataCards from "./components/transactionsDataCards/TransactionsDataCards";
 import { useTransactions } from "./components/hooks/useTransactions";
 import { useState } from "react";
+import Footer from "./components/footer/Footer";
 
 function App() {
 const [theme, setTheme] = useState("light");
@@ -18,7 +19,7 @@ const [theme, setTheme] = useState("light");
   const { transactions } = useTransactions();
 
   return (
-    <>
+    <div className="appContainer">
       <nav>
         <Navbar theme={theme} onToggleTheme={toggleTheme} />
       </nav>
@@ -36,7 +37,8 @@ const [theme, setTheme] = useState("light");
           </Card>
         </div>
       </section>
-    </>
+      <Footer/>
+    </div>
   );
 }
 

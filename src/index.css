@@ -46,6 +46,12 @@
   --success: #2ce589;
   --danger: #de5c5c;
 }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+} 
+/* /* Garante que o padding entra DENTRO do cálculo dos 100vh */ 
 
 body {
   background-color: var(--bg);
@@ -55,6 +61,8 @@ body {
   max-width: 1600px;
   padding: 0 var(--lg);
   font-family: "Inter", sans-serif;
+  height: 100%;
+  margin: 0;
 }
 
 button,
