@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer>
       <div className={styles.footerContainer}>
-        <h6>CM • 2026</h6>
+        <p className={styles.footerText}>CM • 2026</p>
       </div>
     </footer>
   );
