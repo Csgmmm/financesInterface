@@ -50,19 +50,18 @@
 *::before,
 *::after {
   box-sizing: border-box;
-} 
-/* garante que o padding entra dentro do cálculo dos 100vh */ 
+}
+/* garante que o padding entra dentro do cálculo dos 100vh */
 
 body {
   background-color: var(--bg);
   color: var(--text);
   transition: background-color 0.3s ease;
-  margin: var(--lg) auto;
   max-width: 1600px;
   padding: 0 var(--lg);
   font-family: "Inter", sans-serif;
   height: 100%;
-  margin: 0;
+  margin: auto;
 }
 
 button,

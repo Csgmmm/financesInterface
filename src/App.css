@@ -54,13 +54,10 @@
   gap: var(--sm);
 }
 
-
 @media screen and (max-width: 900px) {
-
   .transationsGrid {
     display: flex;
     flex-direction: column;
-
   }
 }
 
@@ -71,7 +68,7 @@
   padding-top: 24px;
 }
 
-/* faz a secção do conteúdo expandir para empurrar o Footer para o fundo */
+/* faz a secção do conteúdo expandir para empurrar o footer para o fundo */
 .generalContainer {
   flex: 1;
 }
