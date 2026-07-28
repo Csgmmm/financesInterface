@@ -23,7 +23,7 @@ function RecentTransactions({ transactions, theme }: RecentTransactionsProps) {
           {/* currentTheme é o nome da prop que o emptystate espera receber e o theme, é a variavel de estado, que quando dá trigger, ele chama a variavel de estado que está na App.tsx, que é o brain do theme. Ou seja, se mudar o theme, o emptystate tambem vai mudar */}
           <h4 className={styles.emptyStateTitle}>No transactions yet</h4>
           <h5 className={styles.emptyStateSubtext}>
-            Start by adding your first record on the left.
+            Start by adding your first record.
           </h5>
         </div>
       ) : (

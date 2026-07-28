@@ -23,6 +23,7 @@
 
 .transactionInput {
   color: var(--text-primary); 
+  font-size: var(--s);
 }
 .transactionInput::placeholder {
   color: var(--placeholder);

@@ -10,7 +10,7 @@ interface NavbarProps {
 function Navbar({ theme, onToggleTheme }: NavbarProps) {
   return (
     <nav className={styles.navContainer}>
-      <div />
+      <div className={styles.navItem} />
       <Logo currentTheme={theme} />
 
       <Toggle theme={theme} toggleTheme={onToggleTheme} />

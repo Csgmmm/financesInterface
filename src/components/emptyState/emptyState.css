@@ -1,3 +1,13 @@
 .emptyState {
     width: 200px;
 }
+
+
+@media screen and (max-width: 900px) {
+
+ .emptyState {
+    margin-top: var(--sm);
+    width: 150px;
+}
+
+}

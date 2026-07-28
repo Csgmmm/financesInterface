@@ -10,3 +10,16 @@
 .navContainer > :last-child {
   justify-self: end;
 }
+
+@media screen and (max-width: 900px) {
+
+  .navContainer {
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .navItem {
+    display: none;
+  }
+}
