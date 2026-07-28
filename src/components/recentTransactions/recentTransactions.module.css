@@ -1,0 +1,79 @@
+.transationTitle {
+  padding-bottom: var(--xs);
+}
+
+.emptyStateContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+
+.emptyStateTitle {
+  margin-top: var(--sm);
+}
+
+.emptyStateSubtext {
+  margin-top: var(--sm);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.transactionCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  padding: var(--sm);
+}
+
+.transactionCard:last-child {
+  border-bottom: none;
+}
+/* ultimo item nao tem border */
+
+.data {
+  display: flex;
+  gap: var(--xl-3);
+  align-items: center;
+}
+
+.date {
+  color: var(--placeholder);
+}
+.description-date {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--xs);
+}
+
+.editButton {
+  width: fit-content;
+}
+
+.income {
+  color: var(--success);
+}
+
+.expense {
+  color: var(--danger);
+}
+
+.transactionsList {
+  max-height: 280px;
+  overflow-y: auto;
+  /* assim mesmo que so tenha um item, a barra de scrol nao aparece, se tiver scroll, aparece sempre */
+  padding-right: var(--sm);
+}
+
+.transactionsList::-webkit-scrollbar {
+  width: 5px;
+}
+
+.transactionsList::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 4px;
+}

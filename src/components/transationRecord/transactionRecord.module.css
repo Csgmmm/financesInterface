@@ -1,0 +1,37 @@
+.inputContainer {
+  margin-top: var(--md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--xs);
+}
+
+.transactionInput {
+  border: 1px solid var(--border);
+  background-color: var(--transparent);
+  outline: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.btnRecord {
+  margin-top: var(--md);
+}
+
+.label {
+    color: var(--text-primary);
+}
+
+.transactionInput {
+  color: var(--text-primary); 
+}
+.transactionInput::placeholder {
+  color: var(--placeholder);
+}
+
+.incomeValue {
+    color: var(--success);
+}
+
+.expenseValue {
+    color: var(--danger);
+}

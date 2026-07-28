@@ -1,0 +1,64 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: var(--card-bg, var(--bg-card));
+  padding: 24px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border);
+}
+
+.label {
+  color: var(--text-primary);
+}
+
+.transactionInput {
+  border: 1px solid var(--border);
+  background-color: var(--transparent);
+  color: var(--text-primary);
+  outline: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--xs);
+  margin-top: 12px;
+}
+
+.typeContainer {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deleteBtn {
+  width: fit-content;
+}
+
+.rightBtns {
+  display: flex;
+  gap: var(--sm);
+}
+

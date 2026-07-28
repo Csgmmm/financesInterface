@@ -1,0 +1,10 @@
+.btnContainer {
+  width: 100%;
+  display: flex;
+  gap: var(--sm);
+  margin-top: var(--md);
+}
+
+.label {
+  color: var(--text-primary);
+}

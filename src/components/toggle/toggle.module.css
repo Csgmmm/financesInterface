@@ -1,0 +1,80 @@
+.themeToggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 110px;
+  height: 56px;
+  padding: 6px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+    background-color: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--button-color);
+  padding: var(--xs);
+}
+
+
+
+.iconSun,
+.iconMoon {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.light .iconSun {
+  color: var(--white);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.light .iconMoon {
+  color: var(--secondary);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.light .iconMoon:hover {
+background-color: color-mix(in srgb, var(--secondary) 50%, transparent);
+  color: var(--white);
+
+}
+
+.dark .iconSun:hover {
+
+background-color: color-mix(in srgb, var(--secondary) 50%, transparent);
+}
+
+.dark .iconSun,
+.dark .iconMoon {
+  color: var(--white);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.toggleBall {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(4px);
+}
+
+.dark .toggleBall {
+  transform: translateX(50px);
+}
+
+
+

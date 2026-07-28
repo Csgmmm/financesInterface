@@ -1,0 +1,5 @@
+.logo {
+  height: var(--xl);
+  width: auto; 
+  display: block;
+}

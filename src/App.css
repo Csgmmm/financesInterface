@@ -1,0 +1,64 @@
+.generalContainer {
+  margin-top: var(--lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--lg);
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--sm);
+}
+
+.titleCards {
+  padding-bottom: var(--xs);
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: var(--s);
+}
+
+.transationSubtitle {
+  font-weight: 300;
+  color: var(--text-primary);
+  margin: 0;
+  font-size: var(--s);
+}
+.incomeCard {
+  display: flex;
+}
+.incomeValue {
+  font-size: var(--md);
+  font-weight: 500;
+  color: var(--success);
+}
+.incomeContainer {
+  width: 100%;
+}
+
+.expensesValue {
+  font-size: var(--md);
+  font-weight: 500;
+  color: var(--danger);
+}
+
+.balanceValue {
+  font-size: var(--md);
+  font-weight: 500;
+  color: var(--secondary);
+}
+
+.transationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--sm);
+}
+
+@media screen and (max-width: 900px) {
+
+  .transationsGrid {
+    display: flex;
+    flex-direction: column;
+
+  }
+}

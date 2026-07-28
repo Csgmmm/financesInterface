@@ -1,0 +1,12 @@
+.navContainer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; 
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--sm);
+}
+
+.navContainer > :last-child {
+  justify-self: end;
+}

@@ -1,0 +1,73 @@
+.button {
+  display: flex;
+  align-items: center;
+  border-radius: var(--xs);
+  border: 0;
+  cursor: pointer;
+  font-size: var(--sm);
+  white-space: nowrap;
+  width: 100%;
+  justify-content: center;
+  font-weight: 600;
+  padding: var(--xs);
+  transition: background-color 0.3s ease;
+}
+
+.primary {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.primary:hover {
+  background-color: var(--secondary);
+  color: var(--white);
+}
+
+.primary.active:hover {
+  background-color: var(--secondary);
+  color: var(--white);
+}
+
+.secondary {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.secondary:hover {
+  color: var(--white);
+  background-color: color-mix(in srgb, var(--secondary) 60%, transparent);
+}
+
+.toggle {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.toggle.active {
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.toggle:hover {
+  color: var(--primary);
+  background-color: color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.tertiary {
+  background-color: transparent;
+  color: var(--primary);
+}
+
+.tertiary:hover {
+  color: var(--secondary);
+
+}
+
+.delete {
+  background-color: var(--danger);
+  color: var(--white);
+  display: flex;
+  gap: var(--xs);
+}

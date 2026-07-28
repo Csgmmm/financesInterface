@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --bg: #f8fafc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --primary: #5aabde;
+  --secondary: #4e88e4;
+  --bg-secondary: #e8e8e8;
+  --bg-card: #ffffff;
+  --placeholder: #afb9c2;
+  --border: #e5e5e5;
+  --text-primary: #595959;
+  --text-secondary: #797979;
+  --white: #ffffff;
+  --success: #169756;
+  --danger: #d71e1e;
+  --xxs: 4px;
+  --xs: 8px;
+  --s: 14px;
+  --sm: 16px;
+  --md: 24px;
+  --lg: 32px;
+  --xl: 44px;
+  --xl-2: 48px;
+  --xl-3: 56px;
+  --xl-4: 64px;
+  --xl-5: 72px;
+  --xl-6: 80px;
+  --xl-7: 88px;
+  --xl-8: 96px;
+  --xl-9: 112px;
+}
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --primary: #5ac0ff;
+  --secondary: #3e77cd;
+  --bg-secondary: #e8e8e8;
+  --bg-card: #223045;
+  --bg-input: #334155;
+  --border: #627895;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --success: #2ce589;
+  --danger: #de5c5c;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease;
+  margin: var(--lg) auto;
+  max-width: 1600px;
+  padding: 0 var(--lg);
+  font-family: "Inter", sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+h1 {
+  margin: 0;
+  color: var(--text-primary);
+}
+h2 {
+  color: var(--text-primary);
+  margin: 0;
+}
+h3 {
+  color: var(--text-primary);
+  margin: 0;
+}
+h4 {
+  color: var(--text-primary);
+  margin: 0;
+}
+
+h5 {
+  color: var(--text-primary);
+  margin: 0;
+}
+
+h6 {
+  color: var(--text-primary);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  color: var(--text-primary);
+}
