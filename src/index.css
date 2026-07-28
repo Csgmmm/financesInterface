@@ -51,7 +51,7 @@
 *::after {
   box-sizing: border-box;
 } 
-/* /* Garante que o padding entra DENTRO do cálculo dos 100vh */ 
+/* garante que o padding entra dentro do cálculo dos 100vh */ 
 
 body {
   background-color: var(--bg);
