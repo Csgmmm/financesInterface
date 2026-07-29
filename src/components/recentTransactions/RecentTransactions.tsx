@@ -4,7 +4,10 @@ import { type ITransaction } from "../hooks/useTransactions";
 import EditModal from "../editModal/EditModal";
 import { useState } from "react";
 import Button from "../button/Button";
-import { Pencil } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
+import { db } from "../../firebase";
+import { doc, deleteDoc } from "firebase/firestore";
+import DeleteModal from "../deleteModal/DeleteModal";
 
 interface RecentTransactionsProps {
   transactions: ITransaction[]; // Recebe o array de transações do pai
@@ -14,6 +17,9 @@ interface RecentTransactionsProps {
 function RecentTransactions({ transactions, theme }: RecentTransactionsProps) {
   const [selectedTransaction, setSelectedTransaction] =
     useState<ITransaction | null>(null); //preciso de um estado pq é aqui que vai ser selecionado o item para a modal
+  const [transactionToDelete, setTransactionToDelete] =
+    useState<ITransaction | null>(null);
+
   return (
     <>
       <h3 className={styles.transationTitle}>Recent Transactions</h3>
@@ -35,30 +41,45 @@ function RecentTransactions({ transactions, theme }: RecentTransactionsProps) {
             return (
               <div key={transaction.id} className={styles.transactionCard}>
                 <div className={styles.data}>
-                  <div className={styles["description-date"]}>
-                    <h4>{transaction.description}</h4>
+                  <div className={styles["description-date-amount"]}>
+                    <div className={styles["description-date"]}>
+                      <h4>{transaction.description}</h4>
+                      <span className={styles.date}>
+                        {new Date(transaction.date).toLocaleDateString(
+                          "en-US",
+                          {
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric",
+                          },
+                        )}
+                      </span>
+                    </div>
 
-                    <span className={styles.date}>
-                      {new Date(transaction.date).toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "numeric",
-                        year: "numeric",
-                      })}
+                    <span className={isIncome ? styles.income : styles.expense}>
+                      {sign}${transaction.amount.toFixed(2)}
                     </span>
                   </div>
 
-                  <span className={isIncome ? styles.income : styles.expense}>
-                    {sign}${transaction.amount.toFixed(2)}
-                  </span>
+                  <div className={styles["edit-modal-delete"]}>
+                    <Button
+                      variant="delete"
+                      type="button"
+                      onClick={() => setTransactionToDelete(transaction)}
+                    >
+                      <Trash2 size={18} />
+                    </Button>
+
+                    <Button
+                      variant="tertiary"
+                      className={styles.editButton}
+                      onClick={() => setSelectedTransaction(transaction)}
+                    >
+                      <Pencil className={styles.iconEdit} />
+                    </Button>
+                    {/* Ao clicar, ele vai atualizar o estado de acordo com os dados da transação */}
+                  </div>
                 </div>
-                <Button
-                  variant="tertiary"
-                  className={styles.editButton}
-                  onClick={() => setSelectedTransaction(transaction)}
-                >
-                  <Pencil size={18} />
-                </Button>
-                {/* Ao clicar, ele vai atualizar o estado de acordo com os dados da transação */}
               </div>
             );
           })}
@@ -67,6 +88,10 @@ function RecentTransactions({ transactions, theme }: RecentTransactionsProps) {
       <EditModal
         transaction={selectedTransaction}
         onClose={() => setSelectedTransaction(null)}
+      />
+      <DeleteModal
+        transaction={transactionToDelete}
+        onClose={() => setTransactionToDelete(null)}
       />
       {/* o prop da editmodal é transaction, e  o selectedTransaction é a variável de estado que contém a transação selecionada após o clique. PS: O que vai renderizar e atualizar o estado é o setSelectedTransaction. 
       E depois, ao fechar, executa uma função que define null a transação selecionada. */}

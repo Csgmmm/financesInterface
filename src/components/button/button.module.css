@@ -62,12 +62,20 @@
 
 .tertiary:hover {
   color: var(--secondary);
-
 }
 
 .delete {
-  background-color: var(--danger);
-  color: var(--white);
+  background-color: transparent;
+  color: var(--danger);
+  display: flex;
+  gap: var(--xs);
+  width: fit-content;
+}
+
+.deleteSecondary {
+  background-color: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
   display: flex;
   gap: var(--xs);
 }

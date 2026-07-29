@@ -22,11 +22,8 @@
 }
 
 .transactionCard {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-bottom: 1px solid var(--border);
-  padding: var(--sm);
+  padding: var(--md) 0;
 }
 
 .transactionCard:last-child {
@@ -38,20 +35,32 @@
   display: flex;
   gap: var(--xl-3);
   align-items: center;
+  justify-content: space-between;
 }
 
-.date {
-  color: var(--placeholder);
+.description-date-amount {
+  display: flex;
+  align-items: center;
 }
+
 .description-date {
-  width: 150px;
+  width: 240px;
   display: flex;
   flex-direction: column;
   gap: var(--xs);
 }
 
+.date {
+  color: var(--placeholder);
+}
+
 .editButton {
-  width: fit-content;
+  width: 100%;
+}
+
+.iconEdit {
+  padding-left: 12px;
+  width: var(--ml);
 }
 
 .income {
@@ -66,7 +75,6 @@
   max-height: 280px;
   overflow-y: auto;
   /* assim mesmo que so tenha um item, a barra de scrol nao aparece, se tiver scroll, aparece sempre */
-  padding-right: var(--sm);
 }
 
 .transactionsList::-webkit-scrollbar {
@@ -76,4 +84,53 @@
 .transactionsList::-webkit-scrollbar-thumb {
   background-color: var(--border);
   border-radius: 4px;
+}
+
+.edit-modal-delete {
+  display: flex;
+  gap: var(--md);
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+@media screen and (max-width: 1100px) {
+  .data {
+    display: flex;
+    flex-direction: column;
+    gap: var(--md);
+  }
+  .description-date {
+    width: 100%;
+  }
+
+  .edit-modal-delete {
+    border-top: 1px solid var(--border);
+    padding-top: var(--sm);
+    display: flex;
+    align-items: center;
+    gap: var(--md);
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+
+  }
+  .description-date-amount {
+    width: 100%;
+  }
+
+  .transactionCard {
+    border: 1px solid var(--border);
+    border-radius: var(--xs);
+    margin: var(--md) 0;
+    padding: var(--sm);
+    margin-right: var(--sm);
+  }
+
+  .transactionCard:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .editButton {
+    width: fit-content;
+  }
 }

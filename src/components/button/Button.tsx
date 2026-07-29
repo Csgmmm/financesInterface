@@ -3,7 +3,7 @@ import styles from "./button.module.css";
 
 type ButtonProps = {
   children: ReactNode;
-  variant: "primary" | "secondary" | "toggle" | "tertiary" | "delete";
+  variant: "primary" | "secondary" | "toggle" | "tertiary" | "delete" | "deleteSecondary";
   onClick?: () => void;
   className?: string;
   isActive?: boolean;

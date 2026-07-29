@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "./editModal.module.css";
 import { db } from "../../firebase";
-import { doc, updateDoc, deleteDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { type ITransaction } from "../hooks/useTransactions";
 import Button from "../button/Button";
-import { Trash2 } from "lucide-react";
+import { X } from "lucide-react";
 
 type EditModalProps = {
   //isto é o que o componente vai ficar à espera de receber sempre que for chamado noutros componentes
@@ -42,23 +42,22 @@ function EditModal({ transaction, onClose }: EditModalProps) {
       alert(error);
     }
   };
-  // Eliminar Transação
-  const handleDelete = async () => {
-    if (confirm("Are you sure you want to delete this transaction?")) {
-      try {
-        await deleteDoc(doc(db, "transactions", transaction.id));
-        onClose(); // Fecha a modal
-      } catch (error) {
-        alert(error);
-      }
-    }
-  };
 
   return (
     <div className={styles.overlay} onClick={onClose}>
       {/* stopPropagation impede que o clique dentro da modal a feche */}
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <h3>Edit Transaction</h3>
+        <div className={styles.header}>
+          <h3>Edit Transaction</h3>
+          <Button
+            variant="tertiary"
+            type="button"
+            className={styles.btnClose}
+            onClick={onClose}
+          >
+            <X />
+          </Button>
+        </div>
 
         <form onSubmit={handleSave}>
           <div className={styles.inputGroup}>
@@ -85,7 +84,7 @@ function EditModal({ transaction, onClose }: EditModalProps) {
           </div>
 
           <div className={styles.typeContainer}>
-           <Button
+            <Button
               variant="toggle"
               type="button"
               isActive={type === "expense"}
@@ -104,28 +103,11 @@ function EditModal({ transaction, onClose }: EditModalProps) {
           </div>
 
           <div className={styles.actions}>
-            <div className={styles.deleteBtn}>
-            <Button
-              variant="delete"
-              type="button"
-              className={styles.btnDelete}
-              onClick={handleDelete}
-            >
-              <Trash2 size={18} />Delete
-            </Button></div>
-            <div className={styles.rightBtns}>
-              <Button
-              variant="secondary"
-                type="button"
-                className={styles.btnCancel}
-                onClick={onClose}
-              >
+            <div className={styles.buttons}>
+              <Button variant="secondary" type="button" onClick={onClose}>
                 Cancel
               </Button>
-              <Button
-                variant="primary"
-                type="submit"
-              >
+              <Button variant="primary" type="submit">
                 Save Changes
               </Button>
             </div>
