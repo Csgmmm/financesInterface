@@ -54,7 +54,7 @@ background-color: color-mix(in srgb, var(--secondary) 50%, transparent);
 .dark .iconSun,
 .dark .iconMoon {
   color: var(--white);
-  width: 44px;
+  width: 47px;
   height: 44px;
   border-radius: 50%;
 }

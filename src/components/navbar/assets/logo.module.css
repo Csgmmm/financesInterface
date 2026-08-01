@@ -1,5 +1,11 @@
 .logo {
   height: var(--xl);
-  width: auto; 
+  width: 100%;
   display: block;
+}
+
+@media screen and (max-width: 900px) {
+  .logo {
+    width: auto;
+  }
 }

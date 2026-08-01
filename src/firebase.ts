@@ -1,6 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-
+import { 
+  getAuth, 
+  GoogleAuthProvider, 
+  signInWithPopup, 
+  signOut 
+} from "firebase/auth";
 
 
 const firebaseConfig = {
@@ -14,6 +19,13 @@ const firebaseConfig = {
 
 // Inicializa o Firebase
 const app = initializeApp(firebaseConfig);
+
+export const auth = getAuth(app);
+
+// Fornecedor do Google e funções auxiliares de Login/Logout
+export const googleProvider = new GoogleAuthProvider();
+export const loginWithGoogle = () => signInWithPopup(auth, googleProvider);
+export const logout = () => signOut(auth);
 
 // Inicializa a base de dados (Firestore) e exporta para usar no resto do site
 export const db = getFirestore(app);

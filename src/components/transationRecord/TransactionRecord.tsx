@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { db } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import TransationType from "../transactionType/TransactionType"; //importado o filho para o pai saiba que botao foi clicado e altere o valor do estado "type" para "income" ou "expense"
 import Button from "../button/Button";
@@ -13,17 +13,37 @@ function TransationRecord() {
   const handleRecordTransaction = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!description || !amount) return alert("Fill up the inputs");
-    try {
-      //depois, o firebase vai ser a variavel type e ver qual é o botão carregado
-      await addDoc(collection(db, "transactions"), {
+    const currentUser = auth.currentUser;
+    if (currentUser) {
+      // user logado: guarda permanentemente no Firebase
+      try {
+        await addDoc(collection(db, "transactions"), {
+          description,
+          amount: Number(amount),
+          type,
+          date: serverTimestamp(),
+          userId: currentUser.uid,
+        });
+      } catch (error) {
+        alert(error);
+      }
+    } else {
+      // user não loggado: guarda no sessionStorage (só dura enquanto a janela estiver aberta)
+      const newTransaction = {
+        id: crypto.randomUUID(),
         description,
         amount: Number(amount),
         type,
-        date: serverTimestamp(),
-      });
- 
-    } catch (error) {
-      return alert(error);
+        date: Date.now(),
+      };
+      const sessionData = sessionStorage.getItem("temp_transactions");
+      const currentList = sessionData ? JSON.parse(sessionData) : [];
+      const updatedList = [newTransaction, ...currentList];
+
+      sessionStorage.setItem("temp_transactions", JSON.stringify(updatedList));
+
+      // Atualiza a página para mostrar os dados novos na lista
+      window.dispatchEvent(new Event("local-storage-update"));
     }
   };
 
@@ -50,13 +70,14 @@ function TransationRecord() {
             min="0"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            
           />
         </div>
         <TransationType type={type} setType={setType} />
         {/* verifica que tipo é através do filho */}
         <div className={styles.btnRecord}>
-          <Button variant="primary" type="submit">Add transaction</Button>
+          <Button variant="primary" type="submit">
+            Add transaction
+          </Button>
         </div>
       </form>
     </div>

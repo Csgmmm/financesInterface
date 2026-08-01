@@ -5,8 +5,7 @@ import EditModal from "../editModal/EditModal";
 import { useState } from "react";
 import Button from "../button/Button";
 import { Pencil, Trash2 } from "lucide-react";
-import { db } from "../../firebase";
-import { doc, deleteDoc } from "firebase/firestore";
+
 import DeleteModal from "../deleteModal/DeleteModal";
 
 interface RecentTransactionsProps {
