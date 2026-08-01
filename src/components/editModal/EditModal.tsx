@@ -10,9 +10,10 @@ type EditModalProps = {
   //isto é o que o componente vai ficar à espera de receber sempre que for chamado noutros componentes
   transaction: ITransaction | null; //Uma transação individual ou null se estiver fechado
   onClose: () => void; // A função para fechar o modal
+  onRefresh?: () => void;
 };
 
-function EditModal({ transaction, onClose }: EditModalProps) {
+function EditModal({ transaction, onClose, onRefresh }: EditModalProps) {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState<"income" | "expense">("expense");
@@ -41,7 +42,7 @@ function EditModal({ transaction, onClose }: EditModalProps) {
             amount: Number(amount),
             type,
           },
-          { merge: true }
+          { merge: true },
         );
       } else {
         // se NÃO estiver logado, atualiza no sessionStorage
@@ -51,12 +52,17 @@ function EditModal({ transaction, onClose }: EditModalProps) {
           const updatedList = list.map((item) =>
             item.id === transaction.id
               ? { ...item, description, amount: Number(amount), type }
-              : item
+              : item,
           );
-          sessionStorage.setItem("temp_transactions", JSON.stringify(updatedList));
+          sessionStorage.setItem(
+            "temp_transactions",
+            JSON.stringify(updatedList),
+          );
         }
       }
-
+      if (onRefresh) {
+        onRefresh(); // Notifica o componente pai que os dados mudaram, para que quando for editado, ele atualize a lista de transações sem precisar de dar refresh na página
+      }
       onClose(); // Fecha a modal
     } catch (error) {
       alert(error);
