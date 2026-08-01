@@ -9,13 +9,11 @@
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
-    background-color: var(--bg);
+  background-color: var(--bg);
   border: 1px solid var(--border);
   color: var(--button-color);
   padding: var(--xs);
 }
-
-
 
 .iconSun,
 .iconMoon {
@@ -41,14 +39,12 @@
 }
 
 .light .iconMoon:hover {
-background-color: color-mix(in srgb, var(--secondary) 50%, transparent);
+  background-color: color-mix(in srgb, var(--secondary) 50%, transparent);
   color: var(--white);
-
 }
 
 .dark .iconSun:hover {
-
-background-color: color-mix(in srgb, var(--secondary) 50%, transparent);
+  background-color: color-mix(in srgb, var(--secondary) 50%, transparent);
 }
 
 .dark .iconSun,
@@ -76,5 +72,20 @@ background-color: color-mix(in srgb, var(--secondary) 50%, transparent);
   transform: translateX(50px);
 }
 
-
-
+@media screen and (max-width: 900px) {
+  .light .iconMoon {
+    display: none;
+  }
+  .dark .iconSun {
+    display: none;
+  }
+  .toggleBall {
+    display: none;
+  }
+  .themeToggle {
+    width: fit-content;
+    background-color: var(--primary);
+    width: 44px;
+    height: 44px;
+  }
+}
