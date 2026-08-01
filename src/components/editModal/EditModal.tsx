@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./editModal.module.css";
-import { db } from "../../firebase";
+import { db, auth } from "../../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { type ITransaction } from "../hooks/useTransactions";
 import Button from "../button/Button";
@@ -32,15 +32,31 @@ function EditModal({ transaction, onClose }: EditModalProps) {
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await setDoc(
-        doc(db, "transactions", transaction.id),
-        {
-          description,
-          amount: Number(amount),
-          type,
-        },
-        { merge: true }
-      );
+      // se estiver logado, atualiza no Firestore
+      if (auth.currentUser) {
+        await setDoc(
+          doc(db, "transactions", transaction.id),
+          {
+            description,
+            amount: Number(amount),
+            type,
+          },
+          { merge: true }
+        );
+      } else {
+        // se NÃO estiver logado, atualiza no sessionStorage
+        const stored = sessionStorage.getItem("temp_transactions");
+        if (stored) {
+          const list: ITransaction[] = JSON.parse(stored);
+          const updatedList = list.map((item) =>
+            item.id === transaction.id
+              ? { ...item, description, amount: Number(amount), type }
+              : item
+          );
+          sessionStorage.setItem("temp_transactions", JSON.stringify(updatedList));
+        }
+      }
+
       onClose(); // Fecha a modal
     } catch (error) {
       alert(error);
