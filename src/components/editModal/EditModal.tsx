@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./editModal.module.css";
 import { db } from "../../firebase";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { type ITransaction } from "../hooks/useTransactions";
 import Button from "../button/Button";
 import { X } from "lucide-react";
@@ -32,11 +32,15 @@ function EditModal({ transaction, onClose }: EditModalProps) {
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await updateDoc(doc(db, "transactions", transaction.id), {
-        description,
-        amount: Number(amount),
-        type,
-      });
+      await setDoc(
+        doc(db, "transactions", transaction.id),
+        {
+          description,
+          amount: Number(amount),
+          type,
+        },
+        { merge: true }
+      );
       onClose(); // Fecha a modal
     } catch (error) {
       alert(error);
