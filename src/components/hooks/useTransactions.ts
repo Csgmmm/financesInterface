@@ -24,7 +24,9 @@ export function useTransactions() {
     const sessionData = sessionStorage.getItem("temp_transactions"); //vai buscar os dados do sessionStorage, e guarda na variavel sessionData.
     return sessionData ? JSON.parse(sessionData) : []; // se existirem dados, Inicializa o estado com os dados do sessionStorage, senão com um array vazio
   });
-
+const refreshTransactions = () => {
+    window.dispatchEvent(new Event("local-storage-update"));
+  };
   useEffect(() => {
     let disconnectFirestore: (() => void) | null = null; // variável para armazenar a função de desconexão do fs
     // Função para atualizar as transações do sessionStorage sem reload
@@ -94,5 +96,5 @@ export function useTransactions() {
     };
   }, []); //Executa este código apenas uma vez, no momento em que a página carrega pela primeira vez.
 
-  return { transactions };
+  return { transactions, refreshTransactions };
 }

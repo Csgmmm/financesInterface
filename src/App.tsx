@@ -9,14 +9,15 @@ import { useState } from "react";
 import Footer from "./components/footer/Footer";
 
 function App() {
-const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
     const nextTheme = theme === "light" ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", nextTheme);
     setTheme(nextTheme);
   };
-  const { transactions } = useTransactions();
+
+  const { transactions, refreshTransactions } = useTransactions();
 
   return (
     <div className="appContainer">
@@ -32,8 +33,11 @@ const [theme, setTheme] = useState("light");
           </Card>
 
           <Card variant="primary">
-
-            <RecentTransactions transactions={transactions} theme={theme} />
+            <RecentTransactions 
+              transactions={transactions} 
+              theme={theme} 
+              onRefresh={refreshTransactions} 
+            />
           </Card>
         </div>
       </section>

@@ -11,9 +11,10 @@ import DeleteModal from "../deleteModal/DeleteModal";
 interface RecentTransactionsProps {
   transactions: ITransaction[]; // Recebe o array de transações do pai
   theme: string;
+  onRefresh?: () => void;
 }
 
-function RecentTransactions({ transactions, theme }: RecentTransactionsProps) {
+function RecentTransactions({ transactions, theme, onRefresh }: RecentTransactionsProps) {
   const [selectedTransaction, setSelectedTransaction] =
     useState<ITransaction | null>(null); //preciso de um estado pq é aqui que vai ser selecionado o item para a modal
   const [transactionToDelete, setTransactionToDelete] =
@@ -87,6 +88,7 @@ function RecentTransactions({ transactions, theme }: RecentTransactionsProps) {
       <EditModal
         transaction={selectedTransaction}
         onClose={() => setSelectedTransaction(null)}
+        onRefresh={onRefresh}
       />
       <DeleteModal
         transaction={transactionToDelete}
