@@ -69,6 +69,7 @@
 
 .expense {
   color: var(--danger);
+  white-space: nowrap
 }
 
 .transactionsList {
