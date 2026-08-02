@@ -53,7 +53,7 @@ function TransationRecord() {
       <h6 className="transationSubtitle">Update your records instantly</h6>
       <form onSubmit={handleRecordTransaction}>
         <div className={styles.inputContainer}>
-          <label className={styles.label}>Description</label>
+          <label className={styles.label}>Description*</label>
           <input
             type="text"
             placeholder="E.g. Groceries"
@@ -61,7 +61,7 @@ function TransationRecord() {
             value={description}
             onChange={(e) => setDescription(e.target.value)} //O e.target.value captura o texto exato que está escrito no campo naquele milissegundo e atualiza o estado description com esse novo valor.
           />
-          <label className={styles.label}>Amount</label>
+          <label className={styles.label}>Amount*</label>
           <input
             type="number"
             className={`${styles.transactionInput} ${type === "income" ? styles.incomeValue : styles.expenseValue}`}
